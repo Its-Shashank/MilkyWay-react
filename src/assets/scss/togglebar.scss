@@ -1,0 +1,32 @@
+// #ffffff • #d0e1f9 • #4d648d • #283655 • #1e1f26
+// previous red color :- rgb(199, 5, 102)
+
+$redOrange: rgb(199, 5, 102);
+$blueLight: #d0e1f9;
+$moreLightBlue: #4d648d;
+$darkBlue: #283655;
+$blackBlue: #1e1f26;
+
+
+nav {
+    // background-color: $blackBlue;
+    height: 6vh;
+}
+
+// Hamburger styling starts
+.hamburger {
+    margin-top: 2px;
+    padding: 6px;
+}
+
+.hamburger:hover {
+    border-radius: 10%;
+}
+
+.hamburger-links {
+    text-decoration: none;
+    color: black;
+    font-family: sans-serif;
+}
+
+// hamburger styling ends
