@@ -1,0 +1,60 @@
+$lightRed: rgb(245, 210, 223);
+$redOrange: #F50057;
+$nearlyGrey: #f8f8f8;
+$blueLight: #d0e1f9;
+$moreLightBlue: #4d648d;
+$darkBlue: #283655;
+$blackBlue: #1e1f26;
+
+.below-auth-container {
+    // background-color: $blackBlue;
+    background-image: linear-gradient(#283655, #1e1f26);
+    height: 65vh;
+    margin-top: 15.3rem;
+    
+    .auth-container {
+        height: 490px;
+        width: 50%;
+        background-color: $lightRed;
+        transform: translateY(-7.2rem);
+        margin-left: 25%;
+        box-shadow: inset -3px -3px 5px $redOrange, 
+            inset 3px 3px 15px $blackBlue;
+        border-radius: 50px;
+        
+        .icon {
+            margin-left: 46%;
+            color: $blueLight;
+            transform: translateY(-50px);
+        }
+
+        .form-control {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        
+            .form-item {
+                color: $blueLight;
+                width: 60%;
+                margin-top: 50px;
+            }
+        }
+
+        .user-type {
+            font-size: 1.5rem;
+            font-family: cursive;
+            margin-left: 2%;
+            color: white;
+            margin-top: 14vh;
+        
+            .signup-link {
+                text-decoration: none;
+                margin-left: 5px;
+                color: $redOrange;
+            }
+        }
+    }
+}
+
+
