@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 export default function SwipeableTemporaryDrawer() {
   const classes = useStyles();
   const [state, setState] = React.useState({
-    left: false
+    right: false
   });
 
   const iconTags = [<Home/>, <Dashboard />, <Phone/>, 
@@ -84,7 +84,7 @@ export default function SwipeableTemporaryDrawer() {
 
   return (
     <div>
-      {['left'].map((anchor) => (
+      {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>
               <Menu className='hamburger' />

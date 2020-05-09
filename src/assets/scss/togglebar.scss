@@ -2,21 +2,37 @@
 // previous red color :- rgb(199, 5, 102)
 
 $redOrange: rgb(199, 5, 102);
-$blueLight: #d0e1f9;
+$blueLight: #f1f4f8;
 $moreLightBlue: #4d648d;
 $darkBlue: #283655;
 $blackBlue: #1e1f26;
+$lightGrey: #eeeeee;
 
 
 nav {
     // background-color: $blackBlue;
-    height: 6vh;
+    height: 7vh;
+    position: fixed;
+    z-index: 1;
+    width: 59.5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    padding: 0 20%;
+    background-color: $blackBlue;
+
+    #logo-header {
+        text-decoration: none;
+        color: $lightGrey;
+    }
 }
 
 // Hamburger styling starts
 .hamburger {
     margin-top: 2px;
     padding: 6px;
+    color: $lightGrey;
 }
 
 .hamburger:hover {

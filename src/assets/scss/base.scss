@@ -1,0 +1,60 @@
+.wrapper {
+    height: 100vh;
+    /* The scaling of the images would add a horizontal scrollbar, so disable x overflow. */
+    overflow-x: hidden;
+    perspective: 2px;
+  }
+  
+  .section {
+    position: relative;
+    height: 100vh;
+  }
+
+      .header {
+          padding-top: 15rem;
+          padding-left: 20%;
+          width: 30%;
+          color: whitesmoke;
+
+        .main {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-weight: 200;
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .sub {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            // width: 40%;
+            font-weight: 100;
+        }
+    }
+  
+  .parallax::after {
+    /* Display and position the pseudo-element */
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    
+    /* Move the pseudo-element back away from the camera,
+     * then scale it back up to fill the viewport.
+     * Because the pseudo-element is further away, it appears to move more slowly, like in real life. */
+    transform: translateZ(-1px) scale(1.5);
+    /* Force the background image to fill the whole element. */
+    background-size: 100%;
+    /* Keep the image from overlapping sibling elements. */ 
+    z-index: -1;
+  }
+  
+  /* Sets the actual background images to adorable kitties. This part is crucial. */
+  .bg1::after {
+    background-image: url('https://images.pexels.com/photos/799273/pexels-photo-799273.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+  }
+  

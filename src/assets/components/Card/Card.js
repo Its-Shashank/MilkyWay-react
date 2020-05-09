@@ -1,51 +1,33 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { 
-    Card, 
-    CardActionArea, 
-    CardActions, 
-    CardContent, 
-    CardMedia, 
-    Button, 
-    Typography
-} from '@material-ui/core';
+import React from 'react'
+import '../../scss/home.scss'
+import { Twitter, Instagram, Facebook, LinkedIn } from '@material-ui/icons'
 
-
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
-  },
-});
-
-export default function ImgMediaCard() {
-  const classes = useStyles();
-
+function Card() {
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          alt="Milk"
-          height="180"
-          image="https://images.pexels.com/photos/799273/pexels-photo-799273.jpeg"
-          title="Milk"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Full cream
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Full cream milk will have all the cream inside it as the name suggests.
-            Best for young ones.
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
+    <div>
+      <div className="user">
         
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
-  );
+        <div>
+          <h3 id="user-subheader">
+            We have been using MilkyWay for quite a long time
+            and it has never ever disappointed us.
+          </h3>
+        </div>
+
+        <div id="styleUserCard">
+          <div className="user-photo">
+          </div>
+          <div className='social-icons'>
+            <Facebook />
+            <LinkedIn />
+            <Twitter />
+          </div>
+          
+          <h4 id="user-header">Mike Ross</h4>
+
+        </div>
+      </div>
+    </div>
+  )
 }
+export default Card

@@ -12,25 +12,6 @@ $lightGrey: #ffffff;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    // background-attachment: fixed;
-
-    .header {
-        color: $nearlyGrey;
-        margin-top: 10rem;
-
-        .main {
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            font-weight: 200;
-            font-size: 4rem;
-            margin-bottom: 20px;
-        }
-
-        .sub {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            width: 40%;
-            font-weight: 100;
-        }
-    }
 }
 
 // Styling below the image background
@@ -47,12 +28,21 @@ $lightGrey: #ffffff;
         border-radius: 15px;
         box-shadow: -5px 5px 15px -5px rgb(207, 200, 200);
 
-        #product-talk {
+        .product-talk-container {
             padding-top: 10%;
 
-            #product-talk-subhead {
-                font-weight: 100;
-                color: $nearlyGrey;
+            #product-talk {
+                height: 15rem;
+                margin-bottom: 30px;
+                padding: 10px 10px 0 10px;
+                background-color: rgb(226, 229, 229);
+
+                #product-talk-subhead {
+                    font-weight: 100;
+                    color: $nearlyGrey;
+                    margin-bottom: 8rem;
+                    // font-family: Verdana, Geneva, Tahoma, sans-serif;
+                }
             }
         }
         .product-talk-head {
@@ -70,50 +60,73 @@ $lightGrey: #ffffff;
             #all-user-div {
                 margin-top: 5%;
                 display: flex;
+                justify-content: space-between;
 
                 .user {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     margin: 0 25px;
-                    padding: 15px;
+                    // padding: 15px;
                     background-color: $lightGrey;
                     box-shadow: 5px 5px 20px rgb(207, 200, 200);
                     border-radius: 20px;
+                    height: 400px;
                     
-                    .user-photo {
-                        background-image: url('https://randomuser.me/api/portraits/men/83.jpg');
-                        background-position: center;
-                        background-size: cover;
-                        height: 10rem;
-                        width: 10rem;
+                    #styleUserCard {
+                        width: 100%;
+                        height: 100%;
                         background-color: $nearlyGrey;
-                        border-radius: 40%;
-                        margin-bottom: 10px;
-                        box-shadow: -5px 5px 15px -5px rgb(207, 200, 200);
+                        display: flex;
+                        flex-direction: column;
+                        // justify-content: center;
+                        align-items: center;
+                        margin-top: 2rem;
+                        border-top-left-radius: 50%;
+                        border-top-right-radius: 50%;
+
+                        .user-photo {
+                            background-image: url('https://randomuser.me/api/portraits/men/83.jpg');
+                            background-position: center;
+                            background-size: cover;
+                            // margin: 80px;
+                            transform: translateY(-2rem);
+                            height: 5rem;
+                            width: 5rem;
+                            background-color: $nearlyGrey;
+                            border-radius: 50%;
+                            // margin-bottom: 10px;
+                            box-shadow: -5px 5px 15px -5px rgb(207, 200, 200);
+                        }
                     }
 
-                    .user-header {
+                    #user-header {
                         margin-top: 10px;
+                        padding-top: 15px;
                         margin-bottom: 8px;
-                        color: $lightBlack;
+                        color: $lightGrey;
+                        font-weight: 100;
+                        font-family: Verdana, Geneva, Tahoma, sans-serif;
                     }
 
-                    .user-subheader {
+                    #user-subheader {
+                        padding: 4rem 7px 10px 7px;
                         color: $nearlyGrey;
                         font-weight: 100;
                         margin-bottom: 15px;
+                        font-weight: 100;
+
                     }
                     .social-icons {
                         cursor: pointer;
 
                         // This is class from mui
                         .MuiSvgIcon-root {
-                            margin: 5px;
+                            margin: 0 5px;
                             padding: 10px;
                             border-radius: 5px;
-                            box-shadow: 5px 5px 10px #dac7c7, 
-                            -5px -5px 10px #f7f1f1 ;
+                            box-shadow: 5px 5px 5px #817777, 
+                            -5px -5px 10px #c9c2c2 ;
                         }
                     }
                 }
