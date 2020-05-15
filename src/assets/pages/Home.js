@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../components/Navbar/Navbar'
+import { Link } from 'react-router-dom'
 import '../scss/base.scss'
 import '../scss/home.scss'
 import Card from '../components/Card/Card'
@@ -7,7 +7,6 @@ import Card from '../components/Card/Card'
 function Home() {
     return (
         <div>
-            <Navbar/>
             <div className='wrapper'>
                 <section class="section parallax bg1">
                     <div className='header'>
@@ -18,6 +17,12 @@ function Home() {
                             You won't have have to go out to buy it 
                             we'll deliver it to you. You can trust us.
                         </h3>
+                        <Link to='/products'>
+                            <button id='button'>
+                                <span>Order Now</span>
+                            </button>
+                        </Link>
+                        
                     </div>
                     
                 </section>

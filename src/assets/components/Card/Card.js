@@ -4,8 +4,7 @@ import { Twitter, Instagram, Facebook, LinkedIn } from '@material-ui/icons'
 
 function Card() {
   return (
-    <div>
-      <div className="user">
+      <div id="user">
         
         <div>
           <h3 id="user-subheader">
@@ -27,7 +26,6 @@ function Card() {
 
         </div>
       </div>
-    </div>
   )
 }
 export default Card

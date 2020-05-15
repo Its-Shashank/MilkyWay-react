@@ -1,57 +1,16 @@
 import React from 'react';
-import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import { Menu, Home, Dashboard, Phone, Info } from '@material-ui/icons';
+import { MenuTwoTone, HomeTwoTone, PhoneTwoTone, InfoTwoTone, FingerprintTwoTone, BorderColorTwoTone } from '@material-ui/icons';
 import { Link } from 'react-router-dom'
 
 // scss
 import '../../scss/togglebar.scss'
 
-
-
-const useStyles = makeStyles({
-  list: {
-    width: 250,
-  },
-  fullList: {
-    width: 'auto',
-  },
-});
-
 export default function SwipeableTemporaryDrawer() {
-  const classes = useStyles();
   const [state, setState] = React.useState({
     right: false
   });
-
-  const iconTags = [<Home/>, <Dashboard />, <Phone/>, 
-        <Info/>
-    ]
-// ['Home', 'Dashboard', 'Contact', 'About']
-   const navLinks = [
-       {
-            name: 'Home',
-            path: '/'
-       },
-       {
-           name: 'Dashboard',
-           path: '/dashboard'
-       },
-       {
-           name: 'Contact',
-           path: '/contact'
-       },
-       {
-           name: 'About',
-           path: '/about'
-       }
-   ] 
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -61,33 +20,16 @@ export default function SwipeableTemporaryDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
-  const list = (anchor) => (
-    <div
-      className={clsx(classes.list)}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List>
-        {navLinks.map((text, index) => (
-          <ListItem button key={text.name}>
-            <ListItemIcon>
-                {iconTags[index]}
-            </ListItemIcon>
-            <ListItemText primary={text.name} />
-          </ListItem>
-        ))}
-      </List>
-      
-    </div>
-  );
+  const delay = {
+    transition: '300ms'
+  }
 
   return (
     <div>
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>
-              <Menu className='hamburger' />
+              <MenuTwoTone className='hamburger' />
             </Button>
           <SwipeableDrawer
             anchor={anchor}
@@ -95,9 +37,42 @@ export default function SwipeableTemporaryDrawer() {
             onClose={toggleDrawer(anchor, false)}
             onOpen={toggleDrawer(anchor, true)}
           >
-              <Link className='hamburger-links' to='/'>
+              {/* <Link className='hamburger-links' to='/'>
                 {list(anchor)}
+              </Link> */}
+
+              <div className="collapse-container" style={delay}>
+              <Link className='hamburger-links' 
+                to='/'
+                onClick={toggleDrawer(anchor, false)}>
+                  <HomeTwoTone /> Home
               </Link>
+              <Link className='hamburger-links' 
+                to='/contact'
+                onClick={toggleDrawer(anchor, false)}>
+                  <PhoneTwoTone /> Contact
+              </Link>
+              <Link className='hamburger-links'
+                to='/login'
+                onClick={toggleDrawer(anchor, false)}>
+                  <FingerprintTwoTone /> Login
+              </Link>
+              <Link className='hamburger-links' 
+                to='/signup'
+                onClick={toggleDrawer(anchor, false)}>
+                  <FingerprintTwoTone /> Signup
+              </Link>
+              <Link className='hamburger-links' 
+                to='/products'
+                onClick={toggleDrawer(anchor, false)}>
+                  <BorderColorTwoTone /> Order Now!
+              </Link>
+              <Link className='hamburger-links' 
+              to='/about'
+              onClick={toggleDrawer(anchor, false)}>
+                  <InfoTwoTone /> About
+              </Link>
+              </div>
             
           </SwipeableDrawer>
         </React.Fragment>

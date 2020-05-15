@@ -1,3 +1,5 @@
+$betterRed: #fe4a49;
+
 .wrapper {
     height: 100vh;
     /* The scaling of the images would add a horizontal scrollbar, so disable x overflow. */
@@ -16,6 +18,45 @@
           width: 30%;
           color: whitesmoke;
 
+          #button {
+            border-radius: 4px;
+            background-color: #f4511e;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 28px;
+            padding: 20px;
+            width: 18rem;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+          }
+
+          #button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+          }
+
+          #button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+          }
+          
+          #button:hover span {
+            padding-right: 25px;
+          }
+          
+          #button:hover span:after {
+            opacity: 1;
+            right: 0;
+          }
+
         .main {
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             font-weight: 200;
@@ -27,8 +68,27 @@
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             // width: 40%;
             font-weight: 100;
+            margin-bottom: 30px;
         }
     }
+
+    //Extra small devices (phones, 600px and down)
+@media only screen and ( max-width: 600px ) {
+  // Upper screen styling
+  .home-background {
+      background-size: unset;
+      .header {
+          margin-left: 5%;
+          .main {
+              font-size: 20px;
+              width: 100%;
+          }
+          .sub {
+              width: 70%;
+          }
+      }
+  }
+}
   
   .parallax::after {
     /* Display and position the pseudo-element */

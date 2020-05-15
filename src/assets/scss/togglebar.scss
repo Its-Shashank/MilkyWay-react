@@ -14,7 +14,7 @@ nav {
     height: 7vh;
     position: fixed;
     z-index: 1;
-    width: 59.5%;
+    width: 62%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -35,14 +35,28 @@ nav {
     color: $lightGrey;
 }
 
-.hamburger:hover {
-    border-radius: 10%;
-}
+.collapse-container {
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+    
+    .hamburger-links {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        margin: 5px 15px;
+        padding: 15px;
+        color: black;
+        font-family: sans-serif;
+        transition: 300ms;
 
-.hamburger-links {
-    text-decoration: none;
-    color: black;
-    font-family: sans-serif;
+        &:hover {
+            color: white;
+            transform: translateX(-3px);
+            transition: 300ms;
+            background-color: rgb(240, 68, 68);
+        }
+    }
 }
 
 // hamburger styling ends

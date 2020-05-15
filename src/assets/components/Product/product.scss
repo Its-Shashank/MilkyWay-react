@@ -1,0 +1,188 @@
+// linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+
+$pinkColor: rgb(168, 34, 117);
+$cardBackground: #E9E9Ef;
+$bestPurple: #7e8de2;
+$lightBlue: #92D1EF;
+$thodaDarkBlue: #07ADD4;
+$almostBlack: rgb(12, 26, 36);
+
+.product-page-background {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1507123088351-58f09404d43a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    #plans-head {
+        color: rgb(153,212,242);
+        font-size: 4rem;
+    }
+
+    .milk-type-btn {
+        cursor: pointer;
+        width: 10rem;
+        height: 4rem;
+        font-size: 1.2rem;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 25px;
+        border: none;
+        margin: 40px 20px;
+        background-color: $almostBlack;
+        color: $cardBackground;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    .milk-type-btn:focus {
+        transition: ease-in-out 300ms;
+        background-color:$pinkColor;
+        color: $cardBackground;
+        outline: none;
+    }
+    .plans {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+        .plan {
+            flex: auto;
+            box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 
+            0 6px 30px 5px rgba(0, 0, 0, 0.12), 
+            0 8px 10px -5px rgba(0, 0, 0, 0.2);
+            height: 48vh;
+            max-width: 12%;
+            // background-color: $cardBackground;
+            margin: 0 20px;
+            border-radius: 15px;
+            text-align: center;
+            padding: 15px 15px;
+            color: $almostBlack;
+            padding: 2rem 4rem;
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
+
+            .content {
+                height: 200px;
+                h2 {
+                    color: rgba(0, 0, 0, 0.3);
+                    margin: 20px 0;
+                }
+            }
+            
+            .price {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .price-tag {
+                    font-size: 5rem;
+                    font-family: Arial, Helvetica, sans-serif;
+                }
+                
+                .rupee {
+                    height: 2rem;
+                    color: $cardBackground;
+                }
+            }
+
+            .plan-type {
+                font-size: 1.5rem;
+                font-family: Arial, Helvetica, sans-serif;
+                color: $almostBlack;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+            }
+
+            .plan-btn {
+                cursor: pointer;
+                opacity: 1;
+                transition: 300ms;
+                width: 11rem;
+                height: 4rem;
+                border: none;
+                border-radius: 30px;
+                margin-top: 5%;
+                font-size: 1.2rem;
+                color: white;
+                box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 
+                0 6px 30px 5px rgba(0, 0, 0, 0.12), 
+                0 8px 10px -5px rgba(0, 0, 0, 0.2);
+            }
+
+            .plan-btn:hover {
+                opacity: 0.7;
+                transition: .5s;
+                
+            }
+
+            .plan-btn:focus {
+                outline: none;
+                opacity: 1;
+            }
+        }
+    }
+}
+
+// Media queries
+
+@media only screen and ( max-width: 1400px ) {
+    .product-page-background {
+        padding-top: 7rem;
+        height: fit-content;
+        background-position: center;
+        
+        .plans {
+            .plan {
+                flex: 25%;
+                max-width: 25%;
+                margin-bottom: 40px;
+                // height: 40vh;
+                // width: 100%;
+            }
+        }
+    }
+}
+
+@media only screen and ( max-width: 800px ) {
+    .product-page-background {
+        .plans {
+            .plan {
+                max-height: 45vh;
+            }
+        }
+    }
+}
+
+@media only screen and ( max-width: 670px ) {
+    .product-page-background {
+        #plans-head {
+            font-size: xxx-large;
+        }
+        .plans {
+            .plan {
+                flex: 50%;
+                max-width: 50%;
+                max-height: 50vh;
+            }
+        }
+    }
+}
+
+@media only screen and ( max-width: 500px ) , ( max-height: 700px ) {
+    .product-page-background {
+        #plans-head {
+            font-size: xx-large;
+        }
+        .plans {
+            .plan {
+                .plan-btn {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}
