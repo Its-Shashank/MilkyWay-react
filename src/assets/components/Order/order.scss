@@ -1,0 +1,125 @@
+.order-container {
+    display: flex;
+    // flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100vh;
+    background-image: url('https://images.unsplash.com/photo-1539552891477-e08e54fbfee4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+
+    .popup-container {
+        background-color: rgb(99, 235, 217);
+        color: sienna;
+        border-radius: 10px;
+        margin-left: 15px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        text-align: center;
+        transition: 0.5s;
+        transform: translateY(-80px);
+    }
+    
+    .form-header {
+        display: flex;
+        flex-direction: column;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        width: 30%;
+        color: sienna;
+        margin-bottom: 15rem;
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+    }
+
+    .form-control {
+        width: 70%;
+        display: flex;
+        border-radius: 10px;
+        flex-direction: column;
+        background-color: rgb(182, 106, 71);
+        padding: 100px 100px;
+        margin: 20px 0;
+        box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 
+            0 6px 30px 5px rgba(0, 0, 0, 0.12), 
+            0 8px 10px -5px rgba(0, 0, 0, 0.2);
+        margin: 16vh 0;
+        
+        button {
+            width: 8rem;
+            font-size: medium;
+            height: 2.5rem;
+            margin: 3rem auto 0;
+            cursor: pointer;
+            background-color: rgb(87, 236, 216);
+            color: sienna;
+            font-weight: bold;
+            border: sienna solid 4px;
+
+            &:focus {
+                outline: none;
+            }
+        }
+        
+        .quantity-container {
+            font-size: 1.2rem;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            padding: 0 2rem;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            // flex-direction: column;
+
+            .form-labels {
+                margin-left: -20px;
+                color: white;
+            }
+
+            .form-inputs {
+                margin: 2px 15px;
+                border-radius: 4px;
+                width: 12rem;
+                border: none;
+                min-height: 1.6rem;
+                background-color: white;
+                padding: 5px ;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            .material-inputs {
+                margin: 2px 15px;
+                border-radius: 4px;
+                width: 12.6rem;
+                border: none;
+                min-height: 1.5rem;
+                background-color: white;
+                padding: 5px ;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+
+        
+    }
+}
+
+
+// All orders page styling
+
+#order-header {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

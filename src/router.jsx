@@ -7,20 +7,41 @@ import Login from './assets/components/Authentication/Login'
 import Signup from './assets/components/Authentication/Signup'
 import Product from './assets/components/Product/Product'
 import Navbar from './assets/components/Navbar/Navbar'
+import Order from './assets/components/Order/Order'
+import AllOrders from  './assets/components/Order/Orders.all'
 
-function router() {
+const isAuthenticated = () => {
+    return localStorage.getItem('login') !== null
+}
+
+const router = () => {
     return (
         <div>
             <BrowserRouter>
             <Navbar />
-
+    
             <Switch>
-                <Route path='/' exact component={Home}/>
+                <Route path='/'
+                exact
+                render={props => (
+                    <Home {...props} />
+                )}
+                />
                 <Route path='/contact' exact component={Contact} />
                 <Route path='/about' exact component={About} />
-                <Route path='/login' exact component={Login} />
+                <Route path='/login' exact
+                render={props => (
+                    <Login {...props} />
+                )}
+                />
                 <Route path='/signup' exact component={Signup} />
-                <Route path='/products' exact component={Product} />
+                <Route path='/products' exact render={props => (
+                    <Product {...props} isAuthenticated={isAuthenticated()} />
+                )} />
+                <Route path='/orders' exact component={Order} />
+                <Route path='/orders/all' exact render={props => (
+                    <AllOrders {...props} />
+                )} />
             </Switch>
             </BrowserRouter>
         </div>

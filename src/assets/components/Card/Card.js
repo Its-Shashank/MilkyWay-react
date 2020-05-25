@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../scss/home.scss'
-import { Twitter, Instagram, Facebook, LinkedIn } from '@material-ui/icons'
+import { Twitter, Facebook, LinkedIn } from '@material-ui/icons'
 
 function Card() {
   return (

@@ -4,12 +4,13 @@ import '../scss/base.scss'
 import '../scss/home.scss'
 import Card from '../components/Card/Card'
 
-function Home() {
+const Home = (props) => {
     return (
         <div>
             <div className='wrapper'>
                 <section class="section parallax bg1">
                     <div className='header'>
+                        <h1>isLoggedIn: {props.isLoggedIn} </h1>
                         <h1 className='main'>Here to fulfill your calcium needs.</h1>
                         <h3 className='sub'>
                             Don't you worry,

@@ -1,6 +1,8 @@
 // https://ecomapii.herokuapp.com/api/signup
-export const Signup_Call = user => {
-    return fetch("https://localhost:9000/customer/signup",{
+
+const API = 'http://localhost:9000'
+export const signup = user => {
+    return fetch(`${API}/customer/signup`,{
         method:"POST",
         headers:{
             Accept:"application/json",
@@ -14,14 +16,59 @@ export const Signup_Call = user => {
     .catch(err => console.log(err));
 };
 
-export const getAllCustomers = customer => {
-    return fetch("https://localhost:9000/customer", {
-        method: 'GET',
+export const login = async user => {
+    return await fetch(`${API}/customer/login`, {
+        method: "POST",
         headers: {
-            Accept: 'application/json',
+            Accept: "applocation/json",
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(customer)
-    }).then(response => response.json())
-    .catch(err => console.log(`Error is from auth ${err}`))
+        body: JSON.stringify(user)
+    })
+    .then(response => response.json())
+    .catch(err => console.log(err))
+}
+
+// Get all orders
+export const orders = async user => {
+    return await fetch(`${API}/orders/all`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " +  JSON.parse(localStorage.getItem('login'))
+        },
+        body: JSON.stringify(user)
+    })
+    .then(response => response.json())
+    .catch(e => console.log(e))
+}
+
+// Order now
+export const order = async user => {
+    const token = JSON.parse(localStorage.getItem('login'))
+    return await fetch(`${API}/orders`, {
+        method: 'POST',
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            'Authorization': token ? `Bearer ${token}` : ''
+        },
+        body: JSON.stringify(user)
+    })
+    .then(response => response.json())
+    .catch(e => console.log(e))
+}
+
+// Remove an order
+export const deleteOrder = async ( id ) => {
+    const token = JSON.parse(localStorage.getItem('login'))
+    return await fetch(`${API}/orders/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            Accept: 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .catch(e => console.log(e))
 }

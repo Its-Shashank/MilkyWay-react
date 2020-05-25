@@ -1,13 +1,22 @@
 import React from 'react';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Button from '@material-ui/core/Button';
-import { MenuTwoTone, HomeTwoTone, PhoneTwoTone, InfoTwoTone, FingerprintTwoTone, BorderColorTwoTone } from '@material-ui/icons';
+import { 
+  MenuTwoTone, 
+  HomeTwoTone, 
+  PhoneTwoTone, 
+  InfoTwoTone, 
+  FingerprintTwoTone, 
+  BorderColorTwoTone, 
+  ExitToApp,
+  ShoppingCartTwoTone
+} from '@material-ui/icons';
 import { Link } from 'react-router-dom'
 
 // scss
 import '../../scss/togglebar.scss'
 
-export default function SwipeableTemporaryDrawer() {
+export default function SwipeableTemporaryDrawer(props) {
   const [state, setState] = React.useState({
     right: false
   });
@@ -24,6 +33,15 @@ export default function SwipeableTemporaryDrawer() {
     transition: '300ms'
   }
 
+  const logout = (props) => {
+    localStorage.removeItem("login")
+  }
+
+  const logoutBtn = () => {
+    logout()
+    toggleDrawer('right', false)
+  }
+  
   return (
     <div>
       {['right'].map((anchor) => (
@@ -42,36 +60,66 @@ export default function SwipeableTemporaryDrawer() {
               </Link> */}
 
               <div className="collapse-container" style={delay}>
-              <Link className='hamburger-links' 
-                to='/'
+                <Link className='hamburger-links' 
+                  to='/'
+                  onClick={toggleDrawer(anchor, false)}>
+                    <HomeTwoTone /> Home
+                </Link>
+
+                <Link className='hamburger-links' 
+                  to='/contact'
+                  onClick={toggleDrawer(anchor, false)}>
+                    <PhoneTwoTone /> Contact
+                </Link>
+
+                {
+                  !localStorage.getItem("login") ? (
+                    <div>
+                        <Link className='hamburger-links'
+                        to='/login'
+                        onClick={toggleDrawer(anchor, false)}>
+                          <FingerprintTwoTone /> Login
+                        </Link>
+
+                        <Link className='hamburger-links'
+                          to='/signup'
+                          onClick={toggleDrawer(anchor, false)}>
+                            <FingerprintTwoTone /> Signup
+                        </Link>
+                    </div>
+                  
+                  ) : (
+                    <div>
+                      <div id='logout-btn'
+                      className='hamburger-links'
+                      onClick={logoutBtn}>
+                        <ExitToApp /> Logout
+                      </div>
+
+                      <Link
+                      to='/orders/all'
+                      className='hamburger-links'
+                      onClick={toggleDrawer(anchor, false)}
+                      >
+                        <ShoppingCartTwoTone />  My orders</Link>
+                    </div>
+                    
+                    )
+                    
+                }
+
+                <Link className='hamburger-links'
+                  to='/products'
+                  onClick={toggleDrawer(anchor, false)}>
+                    <BorderColorTwoTone /> Order Now!
+                </Link>
+
+                <Link className='hamburger-links'
+                to='/about'
                 onClick={toggleDrawer(anchor, false)}>
-                  <HomeTwoTone /> Home
-              </Link>
-              <Link className='hamburger-links' 
-                to='/contact'
-                onClick={toggleDrawer(anchor, false)}>
-                  <PhoneTwoTone /> Contact
-              </Link>
-              <Link className='hamburger-links'
-                to='/login'
-                onClick={toggleDrawer(anchor, false)}>
-                  <FingerprintTwoTone /> Login
-              </Link>
-              <Link className='hamburger-links' 
-                to='/signup'
-                onClick={toggleDrawer(anchor, false)}>
-                  <FingerprintTwoTone /> Signup
-              </Link>
-              <Link className='hamburger-links' 
-                to='/products'
-                onClick={toggleDrawer(anchor, false)}>
-                  <BorderColorTwoTone /> Order Now!
-              </Link>
-              <Link className='hamburger-links' 
-              to='/about'
-              onClick={toggleDrawer(anchor, false)}>
-                  <InfoTwoTone /> About
-              </Link>
+                    <InfoTwoTone /> About
+                </Link>
+
               </div>
             
           </SwipeableDrawer>
