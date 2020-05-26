@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import {orders, deleteOrder} from '../../apiCalls/auth'
 import AlertDialog from '../Card/AlertDialog'
-import { Link } from 'react-router-dom'
+import './AllOrder.scss'
+import { useHistory } from 'react-router-dom'
 
 const AllOrders = (props) => {
+    const history = useHistory()
     const [ loggedIn, setLogin ] = useState(true)
     const [ items, setItems ] = useState([])
     const [ orderRemoved, setOrderRemoved ] = useState(false)
@@ -27,7 +29,8 @@ const AllOrders = (props) => {
         .catch(e => console.log(e))
     }, [])
 
-    const orderCancel = () => {
+    const orderCancel = (event) => {
+        event.preventDefault()
         const id = items[0]
         console.log(id)
         if (id) {
@@ -41,7 +44,7 @@ const AllOrders = (props) => {
                     if (response.message === 'Auth failed') {
                         setLogin(false)
                     }
-                    if (response.message === 'Order removed successfully') {
+                    else if (response.message === 'Order removed successfully') {
                         setOrderRemoved(true)
                         return <AlertDialog message={response.message} />
                     }
@@ -55,28 +58,44 @@ const AllOrders = (props) => {
             
     }
 
+    const redirectHome = () => {
+        history.push('/')
+    }
+
     return (
         <div id='order-header'>
             { !loggedIn ? (
                 <div><h1>Session expired. You are logged out.</h1></div>
             ) : (
                 <div>
-                    { !orderRemoved ? (<h1>Here are all your orders.</h1>) : (<h1>You have not subscribed to our plans yet.</h1>)}
-                    
-                    {   //console.log(items[0])
-                        !orderRemoved && 
-                        items.map((item, index) => (
+                    { !orderRemoved ? 
+                    (
+                        <div>
+                            <h1 className='all-order-header'>Here are all your orders.</h1>
+                            {items.map((item, index) => (
                             // console.log(item)
-                            <ul key={index}>
-                                <li> {item.milkType} </li>
-                                <li> {item.quantity} </li>
-                                <li> {item.deliveryTime} </li>
-                                <li> {item.address} </li>
-                                <li> {item.contact} </li>
+                            <ul key={index} className='order-display'>
+                                <li> Milktype: {item.milkType} </li>
+                                <li>Plan: {item.plan} </li>
+                                <li> Quantity: {item.quantity} </li>
+                                <li> Delivery Time: {item.deliveryTime} </li>
+                                <li> Delivery Address: {item.address} </li>
+                                <li> Contact: {item.contact} </li>
                             </ul>
-                        ))
-                    }
-                    { !orderRemoved ? (<button onClick={orderCancel}>Cancel order</button>): (<button> <Link to='/products'>Order Now</Link> </button>)}
+                        ))}
+                            <button onClick={orderCancel} className='cancel-order-btn'>Cancel order</button>
+                        </div>
+                        
+                    ) : (
+                        <div>
+                            <h1 className='all-order-header'>You have not subscribed to our plans yet.</h1>
+                            <button className='cancel-order-btn' onClick={redirectHome}> Order Now </button>
+                        </div>
+                        
+                    )}
+                    
+                    
+                    
                 </div>
             )}
             

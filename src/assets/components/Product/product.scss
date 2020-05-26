@@ -1,25 +1,27 @@
 // linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+$nearlyGrey: #a5a0a0;
+$lightBlack: rgb(53, 41, 41);
 
-$pinkColor: rgb(168, 34, 117);
-$cardBackground: #E9E9Ef;
-$bestPurple: #7e8de2;
-$lightBlue: #92D1EF;
-$thodaDarkBlue: #07ADD4;
-$almostBlack: rgb(12, 26, 36);
+$neonBlue: #54d4d4;
+$betterRed: #fe4a49;
+$yellowish: #fed766;
+$diffGrey: #e6e6ea;
+$lightGrey: #f4f4f8;
 
 .product-page-background {
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1507123088351-58f09404d43a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    // background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1507123088351-58f09404d43a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80');
+//     background: #000000;  /* fallback for old browsers */
+// background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+// background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-color: floralwhite;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
     #plans-head {
-        color: rgb(153,212,242);
+        color: $neonBlue;
         font-size: 4rem;
     }
 
@@ -33,17 +35,20 @@ $almostBlack: rgb(12, 26, 36);
         border-radius: 25px;
         border: none;
         margin: 40px 20px;
-        background-color: $almostBlack;
-        color: $cardBackground;
+        background-color: $betterRed;
+        color: white;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        transition: 300ms;
+
+        &:hover {
+            transform: translateY(-5px);
+            transition: 300ms;
+        }
+        &:focus {
+            outline: none;
+        }
     }
 
-    .milk-type-btn:focus {
-        transition: ease-in-out 300ms;
-        background-color:$pinkColor;
-        color: $cardBackground;
-        outline: none;
-    }
     .plans {
         display: flex;
         justify-content: center;
@@ -54,23 +59,31 @@ $almostBlack: rgb(12, 26, 36);
             box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 
             0 6px 30px 5px rgba(0, 0, 0, 0.12), 
             0 8px 10px -5px rgba(0, 0, 0, 0.2);
-            height: 48vh;
-            max-width: 12%;
+            height: 52vh;
+            max-width: 20%;
             // background-color: $cardBackground;
             margin: 0 20px;
             border-radius: 15px;
             text-align: center;
-            padding: 15px 15px;
-            color: $almostBlack;
-            padding: 2rem 4rem;
+            // color: $almostBlack;
+            // padding: 2rem 4rem;
             background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
 
             .content {
                 height: 200px;
+                margin: 0 2rem;
                 h2 {
                     color: rgba(0, 0, 0, 0.3);
                     margin: 20px 0;
                 }
+            }
+
+            .individual-header {
+                background-color: $yellowish;
+                margin: 0;
+                padding: 1.5rem;
+                border-top-left-radius: 15px;
+                border-top-right-radius: 15px;
             }
             
             .price {
@@ -85,14 +98,14 @@ $almostBlack: rgb(12, 26, 36);
                 
                 .rupee {
                     height: 2rem;
-                    color: $cardBackground;
+                    // color: $cardBackground;
                 }
             }
 
             .plan-type {
                 font-size: 1.5rem;
                 font-family: Arial, Helvetica, sans-serif;
-                color: $almostBlack;
+                // color: $almostBlack;
                 margin-bottom: 20px;
                 text-transform: uppercase;
             }
@@ -105,23 +118,25 @@ $almostBlack: rgb(12, 26, 36);
                 height: 4rem;
                 border: none;
                 border-radius: 30px;
-                margin-top: 5%;
                 font-size: 1.2rem;
                 color: white;
                 box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 
                 0 6px 30px 5px rgba(0, 0, 0, 0.12), 
                 0 8px 10px -5px rgba(0, 0, 0, 0.2);
-            }
 
-            .plan-btn:hover {
-                opacity: 0.7;
-                transition: .5s;
-                
-            }
+                &:hover {
+                    transform: scale(1.1);
+                    transition: .5s;
+                }
 
-            .plan-btn:focus {
-                outline: none;
-                opacity: 1;
+                &:focus {
+                    outline: none;
+                }
+
+                .plan-link {
+                    text-decoration: none;
+                    color: $lightGrey;
+                }
             }
         }
     }
@@ -131,17 +146,32 @@ $almostBlack: rgb(12, 26, 36);
 
 @media only screen and ( max-width: 1400px ) {
     .product-page-background {
-        padding-top: 7rem;
-        height: fit-content;
-        background-position: center;
+        padding-top: 10rem;
+        height: 100%;
         
         .plans {
             .plan {
                 flex: 25%;
-                max-width: 25%;
+                max-width: 30%;
                 margin-bottom: 40px;
+                margin: 2rem 4rem;
                 // height: 40vh;
                 // width: 100%;
+
+                .plan-btn {
+                    transform: translateY(-2rem);
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .product-page-background {
+        .plans {
+            .plan {
+                max-width: 40%;
+                margin: 2rem 3rem;
             }
         }
     }
@@ -151,22 +181,22 @@ $almostBlack: rgb(12, 26, 36);
     .product-page-background {
         .plans {
             .plan {
-                max-height: 45vh;
+                flex: 50%;
+                max-width: 60%;
             }
         }
     }
 }
 
-@media only screen and ( max-width: 670px ) {
+@media only screen and ( max-width: 700px ) {
     .product-page-background {
         #plans-head {
-            font-size: xxx-large;
+            font-size: 3rem;
         }
         .plans {
             .plan {
                 flex: 50%;
-                max-width: 50%;
-                max-height: 50vh;
+                max-width: 60%;
             }
         }
     }
@@ -174,14 +204,15 @@ $almostBlack: rgb(12, 26, 36);
 
 @media only screen and ( max-width: 500px ) , ( max-height: 700px ) {
     .product-page-background {
+        .milk-type-btn {
+            width: 9rem;
+        }
         #plans-head {
-            font-size: xx-large;
+            font-size: 2rem;
         }
         .plans {
             .plan {
-                .plan-btn {
-                    margin-top: 0;
-                }
+                max-width: 70%;
             }
         }
     }

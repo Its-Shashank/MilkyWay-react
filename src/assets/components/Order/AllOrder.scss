@@ -1,0 +1,38 @@
+$nearlyGrey: #a5a0a0;
+$lightBlack: rgb(53, 41, 41);
+
+$neonBlue: #54d4d4;
+$betterRed: #fe4a49;
+$yellowish: #fed766;
+$diffGrey: #e6e6ea;
+$lightGrey: #f4f4f8;
+
+#order-header {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: $neonBlue;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .all-order-header {
+        margin: 20px 0;
+        
+
+    }
+    .order-display {
+        list-style: none;
+        font-weight: bold;
+        li {
+            margin: 10px 0;
+        }
+    }
+    .cancel-order-btn {
+        width: 8rem;
+        height: 2rem;
+        border: none;
+        background-color: $yellowish;
+        border-radius: 2px;
+    }
+}

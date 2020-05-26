@@ -4,7 +4,6 @@ import Select from '@material-ui/core/Select'
 import { order } from '../../apiCalls/auth'
 import Dialog from '../Card/Dialog'
 import AlertDialog from '../Card/AlertDialog'
-import { useLocation } from 'react-router-dom'
 import './order.scss'
 
   let initialValues = {
@@ -18,7 +17,9 @@ import './order.scss'
     orderPlaced: false,
     countFull: false,
     plan: '',
-    days: ''
+    days: '',
+    deliveryCharge: null,
+    total: ''
   }
 
 const Order = props => {
@@ -37,83 +38,67 @@ const Order = props => {
       plan: state.plan, 
       [event.target.name]: event.target.value 
     })
-    console.log(values.plan)
+    // console.log(values)
     // console.log('handlechange',values)
   }
 
-  const handleOrderNow = () => {
+  const handleOrderNow = (event) => {
+    event.preventDefault()
     console.log('From handleordernow')
-    console.log(values.plan)
+    console.log(values)
     
-    // let { milkType, plan, quantity, deliveryTime, price, timeslot, address, contact } = values
-    // if (!localStorage.getItem('login')) {
-    //   props.history.push('/login')
-    // }
-    // else {
-    //   console.log('from else')
-    //   console.log(values.milkType, values.plan)
-    //   order({ milkType, quantity, deliveryTime, address, contact, plan })
-    //   .then(orderData => {
-    //     if (orderData.message === 'Auth failed') {
-    //       props.history.push('/login')
-    //     }
-    //     else if (orderData.err) {
-    //       console.log(orderData.err)
-    //     }
-    //     // else if (orderData.message === "Can't add more than one order from an account") {
-    //     // }
-    //     else {
-    //       console.log(orderData)
-    //       setValues({ ...values,
-    //         orderPlaced: true,
-    //         countFull: true
-    //       })
+    const { milkType, plan, quantity, deliveryTime, price, timeslot, address, contact } = values
+    if (!localStorage.getItem('login')) {
+      props.history.push('/login')
+    }
+    else {
+      console.log('from else')
+      console.log(values.timeslot, values.price)
+      order({ milkType, quantity, deliveryTime, address, contact, plan })
+      .then(orderData => {
+        if (orderData.message === 'Auth failed') {
+          props.history.push('/login')
+        }
+        else if (orderData.err) {
+          console.log(orderData.err)
+        }
+        else if (orderData.message === "Can't add more than one order from an account") {
+          setValues({countFull: true})
+        }
+        else {
+          console.log(orderData)
+          setValues({ ...values,
+            orderPlaced: true,
+            countFull: false
+          })
 
-    //       // totalPrice()
-    //     }
-    //     // props.history.push(`orders/${id}`)
-    //   })
-    //   .catch(e => console.log(e))
-    // }
+          // totalPrice()
+        }
+        // props.history.push(`orders/${id}`)
+      })
+      .catch(e => console.log(e))
+    }
   }
 
   // Function to calculate the total amount to be paid
   let totalValue
   useEffect(() => {
-    // const totalPrice = () => {
-      // console.log(values)
+
       if ( state.days === 90 || state.days === 180) {
-        // console.log('if')
         totalValue = parseInt(state.price) * parseFloat(values.quantity) * parseInt(state.days)
       }
       else {
-        // console.log('else')
         totalValue = (parseInt(state.price) * parseFloat(values.quantity) + parseInt(state.deliveryCharge)) * parseInt(state.days)
       }
-      // console.log(totalValue)
-    // }
+      // setValues({total: totalValue})
+      console.log(totalValue)
   }, [values.quantity])
-  // const totalPrice = () => {
-  //   console.log(values)
-  //   if ( values.days === '90' || values.days === '180') {
-  //     console.log('if')
-  //     totalValue = parseInt(location.state.price) * parseFloat(values.quantity) * parseInt(location.state.days)
-  //   }
-  //   else {
-  //     console.log('else')
-  //     totalValue = (parseInt(location.state.price) * parseFloat(values.quantity) + parseInt(location.state.deliveryCharge)) * parseInt(location.state.days)
-  //   }
-  //   console.log(totalValue)
-  //   return totalValue
-  // }
-
-  // const total = useEffect()
 
     return (
         <div>
             <div className='order-container'>
-              { values.orderPlaced && <Dialog {...props} days={values.days}  /> }
-              { values.countFull && <AlertDialog /> }
+              { values.orderPlaced && !values.countFull && <Dialog {...props} plan={values.plan} total={values.total}  /> }
+              { values.countFull && !values.orderPlaced && <AlertDialog /> }
 
               <div className='form-header'>
                 <h1>Place your order here.</h1>
@@ -196,14 +181,14 @@ const Order = props => {
 
               
           
-                  {/* { isNaN(total) ? ( 
+                  {/* { isNaN(totalValue) ? ( 
                     <div>
 
                     </div>
                   
                   ) : ( 
                     <div className='popup-container'>
-                      <h1 id='popup-header'>Your total: {total} </h1>
+                      <h1 id='popup-header'>Your total: {totalValue} </h1>
                       
                     </div>
                   )} */}

@@ -5,12 +5,15 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { useHistory } from 'react-router-dom'
 
-export default function AlertDialog() {
+export default function AlertDialog(props) {
   const [open, setOpen] = React.useState(true);
+  const history = useHistory()
 
   const handleClose = () => {
     setOpen(false);
+    history.push('/')
   };
 
   return (
@@ -29,7 +32,7 @@ export default function AlertDialog() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary" autoFocus>
-            Edit order
+            Home
           </Button>
         </DialogActions>
       </Dialog>

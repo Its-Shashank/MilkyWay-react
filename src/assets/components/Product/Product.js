@@ -25,10 +25,12 @@ const Product = (props) => {
                         {/* Here goes the daily plan */}
 
                     <div className="plan">
-                        <h1 className='plan-type'>Daily</h1>
-                        <div className='price'>
-                        <img src={Rupee} className='rupee' alt='' /><h1 className='price-tag'>{price}</h1><h3>/litre</h3>
-
+                        <div className='individual-header'>
+                            <h1 className='plan-type'>Daily</h1>
+                            <div className='price'>
+                            <img src={Rupee} className='rupee' alt='' /><h1 className='price-tag'>{price}</h1><h3>/litre</h3>
+                        </div>
+                        
                         </div>
                         <div className='content'>
                             <Divider />
@@ -52,9 +54,10 @@ const Product = (props) => {
                                             deliveryCharge: 20,
                                             plan: 'Daily',
                                             days: 1,
+                                            price: price,
                                             milkType: price === 50 ? 'Skimmed' : 'Full cream'
                                         }
-                                    }}>
+                                    }} className='plan-link'>
                                         Choose Plan
                                     </Link>
                                 ) : (
@@ -70,10 +73,12 @@ const Product = (props) => {
                             {/* Here goes the monthly plans */}
                     
                     <div className="plan">
-                        <h1 className='plan-type'>Monthly</h1>
-                        <div className='price'>
-                        <img src={Rupee} className='rupee' alt='' /><h1 className='price-tag'>{price}</h1><h3>/litre</h3>
-
+                        <div className='individual-header'>
+                            <h1 className='plan-type'>Monthly</h1>
+                            <div className='price'>
+                            <img src={Rupee} className='rupee' alt='' /><h1 className='price-tag'>{price}</h1><h3>/litre</h3>
+                        </div>
+                        
                         </div>
                         <div className='content'>
                             <Divider />
@@ -96,9 +101,10 @@ const Product = (props) => {
                                             deliveryCharge: 10,
                                             plan: 'Monthly',
                                             days: 30,
+                                            price: price,
                                             milkType: price === 50 ? 'Skimmed' : 'Full cream'
                                         }
-                                    }}>
+                                    }} className='plan-link'>
                                         Choose Plan
                                     </Link>
                                 ) : (
@@ -114,9 +120,12 @@ const Product = (props) => {
                             {/* Here goes the quaterly plans */}
                     
                     <div className="plan">
-                        <h1 className='plan-type' value='quaterly'>Quaterly</h1>
-                        <div className='price'>
-                        <img src={Rupee} className='rupee' alt='' /><h1 className='price-tag'>{price}</h1><h3>/litre</h3>
+                        <div className='individual-header'>
+                            <h1 className='plan-type' value='quaterly'>Quaterly</h1>
+                            <div className='price'>
+                            <img src={Rupee} className='rupee' alt='' /><h1 className='price-tag'>{price}</h1><h3>/litre</h3>
+                        </div>
+                        
 
                         </div>
                         <div className='content'>
@@ -140,9 +149,10 @@ const Product = (props) => {
                                             deliveryCharge: 0,
                                             plan: 'Quaterly',
                                             days: 90,
+                                            price: price,
                                             milkType: price === 50 ? 'Skimmed' : 'Full cream'
                                         }
-                                    }}>
+                                    }} className='plan-link'>
                                         Choose Plan
                                     </Link>
                                 ) : (
@@ -157,9 +167,12 @@ const Product = (props) => {
                             {/* Here goes the half-yearly plans */}
                     
                     <div className="plan">
-                        <h1 className='plan-type' value='half-yearly'>Half-Yearly</h1>
-                        <div className='price'>
-                        <img src={Rupee} className='rupee' alt='' /><h1 className='price-tag'>{price}</h1><h3>/litre</h3>
+                        <div className='individual-header'>
+                            <h1 className='plan-type' value='half-yearly'>Half-Yearly</h1>
+                            <div className='price'>
+                            <img src={Rupee} className='rupee' alt='' /><h1 className='price-tag'>{price}</h1><h3>/litre</h3>
+                        </div>
+
 
                         </div>
                         <div className='content'>
@@ -183,9 +196,10 @@ const Product = (props) => {
                                             deliveryCharge: 0,
                                             plan: 'Half-Yearly',
                                             days: 180,
+                                            price: price,
                                             milkType: price === 50 ? 'Skimmed' : 'Full cream'
                                         }
-                                    }}>
+                                    }} className='plan-link'>
                                         Choose Plan
                                     </Link>
                                 ) : (

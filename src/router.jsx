@@ -42,6 +42,7 @@ const router = () => {
                 <Route path='/orders/all' exact render={props => (
                     <AllOrders {...props} />
                 )} />
+
             </Switch>
             </BrowserRouter>
         </div>

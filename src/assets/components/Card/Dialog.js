@@ -61,13 +61,13 @@ export default function CustomizedDialogs(props) {
   };
 
   const controlPaymentDays = () => {
-    if (props.days === '1') {
+    if (props.plan === 'Daily') {
         return <Typography gutterBottom>You have to pay daily to our delivery guy at the time of delivery.</Typography>
     }
-    else if (props.days === '30') {
+    else if (props.plan === 'Monthly') {
       return <Typography gutterBottom>You have to pay within 15 days from the start of your subscription to delivery guy.</Typography>
     }
-    else if (props.days === '90') {
+    else if (props.plan === 'Quaterly') {
       return <Typography gutterBottom>You have to pay within 30 days of from the start of your subscription to our delivery guy.</Typography>
     }
     else {

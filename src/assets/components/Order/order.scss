@@ -1,3 +1,12 @@
+$nearlyGrey: #a5a0a0;
+$lightBlack: rgb(53, 41, 41);
+
+$neonBlue: #54d4d4;
+$betterRed: #fe4a49;
+$yellowish: #fed766;
+$diffGrey: #e6e6ea;
+$lightGrey: #f4f4f8;
+
 .order-container {
     display: flex;
     // flex-direction: column;
@@ -5,10 +14,7 @@
     justify-content: space-evenly;
     width: 100%;
     height: 100vh;
-    background-image: url('https://images.unsplash.com/photo-1539552891477-e08e54fbfee4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: $neonBlue;
     overflow: hidden;
 
     .popup-container {
@@ -27,7 +33,7 @@
         flex-direction: column;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         width: 30%;
-        color: sienna;
+        color: $lightBlack;
         margin-bottom: 15rem;
 
         h1 {
@@ -41,7 +47,7 @@
         display: flex;
         border-radius: 10px;
         flex-direction: column;
-        background-color: rgb(182, 106, 71);
+        background-color: $neonBlue;
         padding: 100px 100px;
         margin: 20px 0;
         box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 
@@ -55,10 +61,9 @@
             height: 2.5rem;
             margin: 3rem auto 0;
             cursor: pointer;
-            background-color: rgb(87, 236, 216);
-            color: sienna;
+            background-color: $yellowish;
             font-weight: bold;
-            border: sienna solid 4px;
+            border: none;
 
             &:focus {
                 outline: none;
@@ -113,13 +118,69 @@
     }
 }
 
+@media only screen and (max-width: 1250px) {
+    .order-container {
+        flex-direction: column;
+        overflow: scroll;
+
+        .form-header {
+            text-align: center;
+            width: 50%;
+            margin-top: 40rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-control {
+            flex: 25%;
+        }
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .order-container {
+        .form-header {
+            width: 70%;
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .order-container {
+        .form-control {
+            margin: 3rem auto;
+            width: 50%;
+            
+            .form-labels {
+                padding: 0 1rem;
+            }
+        }
+        .form-header {
+            margin-top: 25rem;
+        }
+        .material-inputs {
+            transform: translateX(1rem);
+            min-width: 10rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .order-container {
+        overflow-x: hidden;
+        .form-control {
+            width: 40%;
+
+            .form-labels {
+                transform: translateX(-3rem);
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .form-inputs {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
 
 // All orders page styling
-
-#order-header {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
