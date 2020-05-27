@@ -16,10 +16,15 @@ $lightGrey: #f4f4f8;
     align-items: center;
     justify-content: center;
 
-    .all-order-header {
-        margin: 20px 0;
-        
-
+    .no-order-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 10%;
+        .all-order-header {
+            margin: 20px 0;
+        }
     }
     .order-display {
         list-style: none;

@@ -100,7 +100,7 @@ const AllOrders = (props) => {
                         </div>
                         
                     ) : (
-                        <div>
+                        <div className='no-order-header'>
                             <h1 className='all-order-header'>You don't have any active plans. Order now to enjoy our services.</h1>
                             <button className='cancel-order-btn' onClick={redirectHome}> Order Now </button>
                         </div>
