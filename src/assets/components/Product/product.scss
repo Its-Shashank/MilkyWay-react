@@ -61,12 +61,9 @@ $lightGrey: #f4f4f8;
             0 8px 10px -5px rgba(0, 0, 0, 0.2);
             height: 52vh;
             max-width: 20%;
-            // background-color: $cardBackground;
             margin: 0 20px;
             border-radius: 15px;
             text-align: center;
-            // color: $almostBlack;
-            // padding: 2rem 4rem;
             background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
 
             .content {
@@ -215,5 +212,17 @@ $lightGrey: #f4f4f8;
                 max-width: 70%;
             }
         }
+    }
+}
+
+@media only screen and (max-width: 360px) and (max-height: 640px) {
+    .product-page-background {
+        
+        .plans {
+            .plan {
+                height: 70vh;
+            }
+        }
+        
     }
 }

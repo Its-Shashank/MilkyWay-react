@@ -61,7 +61,10 @@ const Product = (props) => {
                                         Choose Plan
                                     </Link>
                                 ) : (
-                                    <Link to='/login'>
+                                    <Link to='/login' style={{
+                                        textDecoration: 'none',
+                                        color: 'white'
+                                    }}>
                                         Choose Plan
                                     </Link>
                                 )}
@@ -108,7 +111,10 @@ const Product = (props) => {
                                         Choose Plan
                                     </Link>
                                 ) : (
-                                    <Link to='/login'>
+                                    <Link to='/login' style={{
+                                        color: 'white',
+                                        textDecoration: 'none'
+                                    }}>
                                         Choose Plan
                                     </Link>
                                 )}
@@ -156,7 +162,10 @@ const Product = (props) => {
                                         Choose Plan
                                     </Link>
                                 ) : (
-                                    <Link to='/login'>
+                                    <Link to='/login' style={{
+                                        textDecoration: 'none',
+                                        color: 'white'
+                                    }}>
                                         Choose Plan
                                     </Link>
                                 )}
@@ -203,7 +212,10 @@ const Product = (props) => {
                                         Choose Plan
                                     </Link>
                                 ) : (
-                                    <Link to='/login'>
+                                    <Link to='/login' style={{
+                                        color: 'white',
+                                        textDecoration: 'none'
+                                    }}>
                                         Choose Plan
                                     </Link>
                                 )}
