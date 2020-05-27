@@ -1,6 +1,6 @@
 // https://ecomapii.herokuapp.com/api/signup
-
-const API = 'http://localhost:9000'
+// https://milky-way-api.herokuapp.com/
+const API = 'https://milkyway-api.herokuapp.com'
 export const signup = user => {
     return fetch(`${API}/customer/signup`,{
         method:"POST",

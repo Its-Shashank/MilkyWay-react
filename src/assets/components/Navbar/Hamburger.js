@@ -4,8 +4,6 @@ import Button from '@material-ui/core/Button';
 import { 
   MenuTwoTone, 
   HomeTwoTone, 
-  PhoneTwoTone, 
-  InfoTwoTone, 
   FingerprintTwoTone, 
   BorderColorTwoTone, 
   ExitToApp,
@@ -35,10 +33,6 @@ export default function SwipeableTemporaryDrawer(props) {
 
   const logout = (props) => {
     localStorage.removeItem("login")
-  }
-
-  const logoutBtn = () => {
-    logout()
     toggleDrawer('right', false)
   }
   
@@ -55,21 +49,11 @@ export default function SwipeableTemporaryDrawer(props) {
             onClose={toggleDrawer(anchor, false)}
             onOpen={toggleDrawer(anchor, true)}
           >
-              {/* <Link className='hamburger-links' to='/'>
-                {list(anchor)}
-              </Link> */}
-
               <div className="collapse-container" style={delay}>
                 <Link className='hamburger-links' 
                   to='/'
                   onClick={toggleDrawer(anchor, false)}>
                     <HomeTwoTone /> Home
-                </Link>
-
-                <Link className='hamburger-links' 
-                  to='/contact'
-                  onClick={toggleDrawer(anchor, false)}>
-                    <PhoneTwoTone /> Contact
                 </Link>
 
                 {
@@ -92,7 +76,7 @@ export default function SwipeableTemporaryDrawer(props) {
                     <div>
                       <div id='logout-btn'
                       className='hamburger-links'
-                      onClick={logoutBtn}>
+                      onClick={logout}>
                         <ExitToApp /> Logout
                       </div>
 
@@ -101,7 +85,7 @@ export default function SwipeableTemporaryDrawer(props) {
                       className='hamburger-links'
                       onClick={toggleDrawer(anchor, false)}
                       >
-                        <ShoppingCartTwoTone />  My orders</Link>
+                        <ShoppingCartTwoTone /> My orders</Link>
                     </div>
                     
                     )
@@ -112,12 +96,6 @@ export default function SwipeableTemporaryDrawer(props) {
                   to='/products'
                   onClick={toggleDrawer(anchor, false)}>
                     <BorderColorTwoTone /> Order Now!
-                </Link>
-
-                <Link className='hamburger-links'
-                to='/about'
-                onClick={toggleDrawer(anchor, false)}>
-                    <InfoTwoTone /> About
                 </Link>
 
               </div>

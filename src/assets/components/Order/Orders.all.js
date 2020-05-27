@@ -3,15 +3,23 @@ import {orders, deleteOrder} from '../../apiCalls/auth'
 import AlertDialog from '../Card/AlertDialog'
 import './AllOrder.scss'
 import { useHistory } from 'react-router-dom'
+import {PropagateLoader} from "react-spinners";
+import { css } from "@emotion/core";
+const override = css`
+    display: block;
+    margin-left:50%;
+   `;
 
 const AllOrders = (props) => {
     const history = useHistory()
+    const [ loading, setLoading ] = useState(false)
     const [ loggedIn, setLogin ] = useState(true)
     const [ items, setItems ] = useState([])
     const [ orderRemoved, setOrderRemoved ] = useState(false)
 
     useEffect(() => {
         setItems([])
+        setLoading(true)
         orders()
         .then(response => {
             if (response.message === 'Auth failed') {
@@ -19,43 +27,48 @@ const AllOrders = (props) => {
                     props.history.push('/login')
                 }, 2000)
                 setLogin(false)
+                setLoading(false)
+            }
+            else if (!response.result[0]) {
+                setOrderRemoved(true)
+                setLoading(false)
             }
             else {
-                console.log(response.result[0])
                 setItems([response.result[0]])
+                setOrderRemoved(false)
+                setLoading(false)
             }
             // console.log(response.result)
         })
-        .catch(e => console.log(e))
     }, [])
 
     const orderCancel = (event) => {
         event.preventDefault()
         const id = items[0]
-        console.log(id)
         if (id) {
             deleteOrder(id._id)
             .then(response => {
-                if (response.err) {
-                    console.log(response.err)
-                }
-                else {
-                    
-                    if (response.message === 'Auth failed') {
-                        setLogin(false)
-                    }
-                    else if (response.message === 'Order removed successfully') {
-                        setOrderRemoved(true)
-                        return <AlertDialog message={response.message} />
-                    }
-                    console.log(response)
-                }
 
+                if (response.message === 'Auth failed') {
+                    setLogin(false)
+                }
+                else if (response.message === 'Order removed successfully') {
+                    setOrderRemoved(true)
+                    return <AlertDialog message={response.message} />
+                }
             })
-            .catch(err => console.log(err))
-            console.log(items[0]._id)
         }
             
+    }
+    const loader = () => {
+        if(loading === true){
+            return <PropagateLoader
+            css={override}
+            size={25}
+            color={"#000"}
+            loading={loading}
+          />
+        }
     }
 
     const redirectHome = () => {
@@ -71,9 +84,9 @@ const AllOrders = (props) => {
                     { !orderRemoved ? 
                     (
                         <div>
-                            <h1 className='all-order-header'>Here are all your orders.</h1>
+                            <h1 className='all-order-header'>Your active plan.</h1>
+                            {loader()}
                             {items.map((item, index) => (
-                            // console.log(item)
                             <ul key={index} className='order-display'>
                                 <li> Milktype: {item.milkType} </li>
                                 <li>Plan: {item.plan} </li>
@@ -88,7 +101,7 @@ const AllOrders = (props) => {
                         
                     ) : (
                         <div>
-                            <h1 className='all-order-header'>You have not subscribed to our plans yet.</h1>
+                            <h1 className='all-order-header'>You don't have any active plans. Order now to enjoy our services.</h1>
                             <button className='cancel-order-btn' onClick={redirectHome}> Order Now </button>
                         </div>
                         

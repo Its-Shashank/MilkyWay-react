@@ -2,9 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import '../scss/base.scss'
 import '../scss/home.scss'
-import Card from '../components/Card/Card'
 
-const Home = (props) => {
+const Home = () => {
     return (
         <div>
             <div className='wrapper home-background'>

@@ -1,8 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Home from './assets/pages/Home'
-import About from './assets/pages/About'
-import Contact from './assets/pages/Contact'
 import Login from './assets/components/Authentication/Login'
 import Signup from './assets/components/Authentication/Signup'
 import Product from './assets/components/Product/Product'
@@ -27,8 +25,6 @@ const router = () => {
                     <Home {...props} />
                 )}
                 />
-                <Route path='/contact' exact component={Contact} />
-                <Route path='/about' exact component={About} />
                 <Route path='/login' exact
                 render={props => (
                     <Login {...props} />

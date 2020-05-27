@@ -36,6 +36,14 @@ $lightGrey: #f4f4f8;
         color: $lightBlack;
         margin-bottom: 15rem;
 
+        .order-image {
+            // width: 5rem;
+            height: 10rem;
+            margin-top: 4rem;
+            margin-left: -10rem;
+            transform: scale(.5);
+        }
+
         h1 {
             font-size: 3rem;
             margin-bottom: 20px;
@@ -126,8 +134,12 @@ $lightGrey: #f4f4f8;
         .form-header {
             text-align: center;
             width: 50%;
-            margin-top: 40rem;
+            margin-top: 45rem;
             margin-bottom: 1rem;
+
+            .order-image {
+                margin-left: -7rem;
+            }
         }
         
         .form-control {
@@ -155,7 +167,14 @@ $lightGrey: #f4f4f8;
             }
         }
         .form-header {
-            margin-top: 25rem;
+            margin-top: 40rem;
+
+            .order-image {
+                margin-top: 0;
+                margin-bottom: 8rem;
+                // margin-left: -8rem;
+                transform: scale(0.5) translateX(-18%);
+            }
         }
         .material-inputs {
             transform: translateX(1rem);
@@ -167,6 +186,11 @@ $lightGrey: #f4f4f8;
 @media only screen and (max-width: 600px) {
     .order-container {
         overflow-x: hidden;
+        .form-header {
+            .order-image {
+                transform: translateX(-8%) scale(0.4);
+            }
+        }
         .form-control {
             width: 40%;
 

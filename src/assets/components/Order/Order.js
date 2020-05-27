@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import MenuItem from '@material-ui/core/MenuItem'
 import Select from '@material-ui/core/Select'
 import { order } from '../../apiCalls/auth'
 import Dialog from '../Card/Dialog'
 import AlertDialog from '../Card/AlertDialog'
 import './order.scss'
+import OrderSvg from './undraw_responsive.svg'
 
   let initialValues = {
     milkType: '',
@@ -19,7 +20,6 @@ import './order.scss'
     plan: '',
     days: '',
     deliveryCharge: null,
-    total: ''
   }
 
 const Order = props => {
@@ -38,8 +38,6 @@ const Order = props => {
       plan: state.plan, 
       [event.target.name]: event.target.value 
     })
-    // console.log(values)
-    // console.log('handlechange',values)
   }
 
   const handleOrderNow = (event) => {
@@ -47,7 +45,7 @@ const Order = props => {
     console.log('From handleordernow')
     console.log(values)
     
-    const { milkType, plan, quantity, deliveryTime, price, timeslot, address, contact } = values
+    const { milkType, plan, quantity, deliveryTime, address, contact } = values
     if (!localStorage.getItem('login')) {
       props.history.push('/login')
     }
@@ -71,38 +69,29 @@ const Order = props => {
             orderPlaced: true,
             countFull: false
           })
-
-          // totalPrice()
         }
-        // props.history.push(`orders/${id}`)
       })
-      .catch(e => console.log(e))
+      .catch(e => {
+        return <h1 style={{
+          fontSize: '5rem',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>Something went wrong</h1>
+      })
     }
   }
-
-  // Function to calculate the total amount to be paid
-  let totalValue
-  useEffect(() => {
-
-      if ( state.days === 90 || state.days === 180) {
-        totalValue = parseInt(state.price) * parseFloat(values.quantity) * parseInt(state.days)
-      }
-      else {
-        totalValue = (parseInt(state.price) * parseFloat(values.quantity) + parseInt(state.deliveryCharge)) * parseInt(state.days)
-      }
-      // setValues({total: totalValue})
-      console.log(totalValue)
-  }, [values.quantity])
 
     return (
         <div>
             <div className='order-container'>
-              { values.orderPlaced && !values.countFull && <Dialog {...props} plan={values.plan} total={values.total}  /> }
-              { values.countFull && !values.orderPlaced && <AlertDialog /> }
 
               <div className='form-header'>
                 <h1>Place your order here.</h1>
                 <h2>You chose our {state.plan} plan of {state.milkType} milk.</h2>
+                <div className='order-image'>
+                  <img src={OrderSvg} alt=""/>
+                </div>
               </div>
                 <div>
                 <form className='form-control'>
@@ -178,20 +167,32 @@ const Order = props => {
               <button onClick={handleOrderNow}>Order Now</button>
                   
               </form>
-
               
-          
-                  {/* { isNaN(totalValue) ? ( 
-                    <div>
-
-                    </div>
-                  
-                  ) : ( 
+                { (state.days === 90 || state.days === 180) ? (
+                  <div>
                     <div className='popup-container'>
-                      <h1 id='popup-header'>Your total: {totalValue} </h1>
+                      { !isNaN(parseInt(state.price) * parseFloat(values.quantity) * parseInt(state.days)) && ( 
+                        <h1 id='popup-header'>Your total: { parseInt(state.price) * parseFloat(values.quantity) * parseInt(state.days) } </h1>
+                        
+                      )}
+                  { values.orderPlaced && !values.countFull && <Dialog {...props} plan={values.plan} total={ parseInt(state.price) * parseFloat(values.quantity) * parseInt(state.days) }  /> }
                       
                     </div>
-                  )} */}
+                  </div>
+                ) : (
+                  <div>
+                    <div className='popup-container'>
+                      { !isNaN((parseInt(state.price) * parseFloat(values.quantity) + parseInt(state.deliveryCharge)) * parseInt(state.days)) && (
+                      <h1 id='popup-header'>Your total: { (parseInt(state.price) * parseFloat(values.quantity) + parseInt(state.deliveryCharge)) * parseInt(state.days) } </h1>
+
+                      )}
+                  { values.orderPlaced && !values.countFull && <Dialog {...props} plan={values.plan} total={ (parseInt(state.price) * parseFloat(values.quantity) + parseInt(state.deliveryCharge)) * parseInt(state.days) }  /> }
+                      
+                    </div>
+                  </div>
+                ) }
+
+              { values.countFull && !values.orderPlaced && <AlertDialog /> }
                 </div>
 
             </div>

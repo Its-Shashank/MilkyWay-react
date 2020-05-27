@@ -5,7 +5,6 @@ import { Email, Lock } from '@material-ui/icons'
 import Snackbar from '../Card/Snackbar'
 import { Link } from 'react-router-dom'
 import { login } from '../../apiCalls/auth'
-// import { Redirect } from 'react-router-dom'
 import {PropagateLoader} from "react-spinners";
 import { css } from "@emotion/core";
 const override = css`
@@ -35,7 +34,6 @@ const Login = () => {
         const { email, password } = authValues
         login({ email, password })
         .then(user => {
-            console.log(user)
             localStorage.setItem('login', JSON.stringify(user.token))
             setAuthValues({
                 email: '',
@@ -45,7 +43,6 @@ const Login = () => {
                 loading:false
             })
         })
-        .catch(err => console.log(err))
         event.preventDefault()
     }
     const loader = () => {
